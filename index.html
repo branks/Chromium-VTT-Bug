@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <style>
+      video {
+        width: 500px;
+        height: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <video id="video" crossorigin="anonymous" controls>
+      <source src="mov_bbb.mp4" type="video/mp4">
+      <source src="mov_bbb.ogg" type="video/ogg">
+      <track label="English subtitles" src="https://raw.githubusercontent.com/branks/Chromium-VTT-Bug/master/subs.vtt" srclang="en" default mode="showing" />
+    </video>
+    <span id="toggle">Toggle</span>
+
+    <script>
+      var video = document.getElementById("video");
+      var toggle = document.getElementById("toggle");
+
+      toggle.onclick = function() {
+        if (video.textTracks.length && video.textTracks[0].cues.length) {
+          if (video.textTracks[0].cues[0].line === 1) {
+            video.textTracks[0].cues[0].line = 4;
+          } else {
+            video.textTracks[0].cues[0].line = 1;
+          }
+        }
+      };
+    </script>
+  </body>
+  </html>
